@@ -4,9 +4,11 @@
 mkdir -p final
 mkdir -p intermediate
 
-# Extract the first page.
+# Extract the first page of the Cox bill.
 pdftk ~/Downloads/PdfBillingStatement.pdf cat 1 output intermediate/cox-broken.pdf
-pdftk ~/Downloads/Verizon_bill_*          cat 1 output final/verizon.pdf
+
+# Extract the first 4 pages of the Verizon bill.
+pdftk ~/Downloads/Verizon_bill_*          cat 1-4 output final/verizon.pdf
 
 # Remove the Cox pin.
 pdftk intermediate/cox-broken.pdf background cox-watermark.pdf output intermediate/cox-with-watermark.pdf
